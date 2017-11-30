@@ -96,3 +96,20 @@ for times in np.arange(1000):
 
 sns.distplot(count_ones_mean, kde=True)
 
+
+# ## 신뢰구간
+# 
+# 
+# "동전 6번 던지기"를 30번 반복했을 때 숫자 1이 나오는 평균횟수의 신뢰구간을 다음과 같이 구할 수 있다.
+# 신뢰수준은 95%를 사용한다.
+
+# In[9]:
+
+from scipy import stats
+
+
+# In[10]:
+
+cube_30 = cube_experiment(30)
+stats.norm.interval(0.95, loc=cube_30.mean(), scale=cube_30.std()/np.sqrt(30))
+
